@@ -4,6 +4,7 @@ import {
   FaFacebookF,
   FaGithub,
   FaHouse,
+  FaInstagram,
   FaLinkedinIn,
   FaRenren,
   FaUser,
@@ -78,9 +79,9 @@ export const ProjectsData = [
   },
   {
     id: `codepen-${Date.now()}`,
-    name: "CodePen Clone",
+    name: "Fridge Helper",
     imgSrc: CodePenClone,
-    gitURL: "https://github.com/Vetrivel-VP",
+    gitURL: "https://github.com/DhruvGorasiya/fridgeHelper/tree/main/FridgeManagerProject",
   },
   {
     id: `openai-${Date.now()}`,

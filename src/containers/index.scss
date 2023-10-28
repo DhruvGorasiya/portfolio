@@ -1,13 +1,13 @@
 .stage-cube-cont {
-  // width: 50%;
-  // height: 100%;
-  // top: 0;
-  // padding-top: 18%;
-  // margin-left: 0;
-  // position: relative;
-  // right: 0;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  padding-top: 18%;
+  margin-left: 0;
+  position: relative;
+  right: 0;
   // overflow: hidden;
-  // display: block;
+  display: block;
 }
 
 .cubespinner {
@@ -19,7 +19,7 @@
   transform-origin: 100px 100px 0;
   // margin:calc(50% - 100px);
   margin-top:calc(50% - 150px);
-  margin-left:calc(50% - 100px);
+  // margin-right:calc(50% - 00px);
 
   div {
     position: absolute;
