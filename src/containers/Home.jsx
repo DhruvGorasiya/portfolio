@@ -22,13 +22,22 @@ const Home = () => {
         <p className="text-base text-texlight mt-6 text-center">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, dolorum distinctio amet architecto cupiditate numquam, fugit, eligendi ad magni laborum neque animi itaque repellat facilis ducimus. Culpa accusamus odit laboriosam.
         </p>
-        <div className="flex item-center justify-center gap-16 mt-16">
+        <div className="flex item-center justify-center gap-16 mt-16 mb-5">
           <AnimatePresence>
             {Socials && Socials.map((item,index)=> (
               <HomeSocialLinks key ={index} data={item} index={index}/>
             ))}
           </AnimatePresence>
         </div>
+
+        <div>
+          <a href="a" 
+          className="text-white border border-[rgba(255,255,255,0.3)] rounded-xl px-8 py-3 active:95 group hover:border-primary"
+          style={{ boxShadow: "inset 0px 0px 10px rgba(255,255,255,0.3)" }}>
+
+          Download Resume</a>
+        </div>
+
       </div>
       <div className="w-full h-full flex items-center justify-center lg:items-center">
         <motion.img initial={{ y: 0 }}
