@@ -42,20 +42,20 @@ const ParticlesContainer = () => {
               quantity: 90,
             },
             repulse: {
-              distance: 200,
+              distance: 100,
               duration: 0.4,
             },
           },
         },
         particles: {
           color: {
-            value: "#e68e2e",
+            value: "#FFFFFF",
           },
           links: {
-            color: "#f5d393",
+            color: "#FFFFFF",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.2,
             width: 1,
           },
           collisions: {

@@ -63,7 +63,7 @@ const Contact = () => {
           transition={{ delay: 0.4 }}
           className="flex item-center justify-center py-24">
           <img src={Leaf1} className="w-6 h-auto object-contain" alt="" />
-          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5">Contact Me</p>
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-15 text-2xl">Contact Me</p>
           <img src={Leaf2} className="w-6 h-auto object-contain" alt="" />
         </motion.div>
       </div>

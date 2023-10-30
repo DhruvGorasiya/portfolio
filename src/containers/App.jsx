@@ -1,5 +1,5 @@
 import React from "react";
-import {About, Contact, Header,Home, ParticlesContainer, Projects, ServiceCount, Skills} from "./"
+import {About, Contact, Header,Home, ParticlesContainer, Projects, Skills} from "./"
 import { AnimatePresence } from "framer-motion";
 import { Socials } from "../utils/helper";
 import { HomeSocialLinks } from "../components";
@@ -12,7 +12,7 @@ const App = () => {
 
       <Header/>
       <Home/>
-      <ServiceCount/>
+      {/* <ServiceCount/> */}
       <About/>
       <Skills/>
       <Projects/>

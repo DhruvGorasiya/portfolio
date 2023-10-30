@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Hero } from "../assets";
+import { Hero, Resume } from "../assets";
 import { HeroTypeWritter, HomeSocialLinks } from "../components";
 import { Socials } from "../utils/helper";
 
@@ -20,7 +20,7 @@ const Home = () => {
           <HeroTypeWritter words={["Full Stack Developer"]} speed={100}/>
         </h2>
         <p className="text-base text-texlight mt-6 text-center">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, dolorum distinctio amet architecto cupiditate numquam, fugit, eligendi ad magni laborum neque animi itaque repellat facilis ducimus. Culpa accusamus odit laboriosam.
+        Transforming concepts into reality through the development of software that seamlessly merges technology and artistic innovation.
         </p>
         <div className="flex item-center justify-center gap-16 mt-16 mb-5">
           <AnimatePresence>
@@ -31,11 +31,19 @@ const Home = () => {
         </div>
 
         <div>
-          <a href="a" 
-          className="text-white border border-[rgba(255,255,255,0.3)] rounded-xl px-8 py-3 active:95 group hover:border-primary"
-          style={{ boxShadow: "inset 0px 0px 10px rgba(255,255,255,0.3)" }}>
 
-          Download Resume</a>
+          <a href={Resume} 
+          className="text-white border border-[rgba(255,255,255,0.3)] rounded-xl px-8 py-3 active:95 group hover:border-primary"
+          style={{ boxShadow: "inset 0px 0px 10px rgba(255,255,255,0.3)" }}
+          >Resume</a>
+          <br />
+          <br />
+          <br />
+          <a href={Resume} 
+          className="text-white border border-[rgba(255,255,255,0.3)] rounded-xl px-8 py-3 active:95 group hover:border-primary"
+          style={{ boxShadow: "inset 0px 0px 10px rgba(255,255,255,0.3)" }}
+          download={true}
+          >Download Resume</a>
         </div>
 
       </div>

@@ -17,7 +17,7 @@ const Projects = () => {
           transition={{ delay: 0.4 }}
           className="flex item-center justify-center py-24">
           <img src={Leaf1} className="w-6 h-auto object-contain" alt="" />
-          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5">Projects</p>
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5 text-2xl">Projects</p>
           <img src={Leaf2} className="w-6 h-auto object-contain" alt="" />
         </motion.div>
       </div>
@@ -45,11 +45,12 @@ const ProjectCard = ({ project }) => {
       onMouseLeave={() => setisHoverred(false)}>
       <motion.img
         whileHover={{ scale: 1.1 }}
-        className="w-full h-full object-contain rounded-lg" src={project.imgSrc}
+        className="w-full h-96 overflow-hidden rounded py-12" src={project.imgSrc}
       />
       {isHoverred && (
-        <motion.div className="absolute inset-0 backdrop-blur-md bg-[rgba(0,0,0,0.6)] flex items-center justify-center flex-col gap-2">
+        <motion.div className="absolute inset-0 backdrop-blur-md bg-[rgba(0,0,0,0.6)] flex items-center justify-center flex-col duration-300 gap-2">
           <p className="text-xl text-primary">{project?.name}</p>
+          <p className="text-white px-2">{project?.description}</p>
           <a href={project?.gitURL} className="">
             <FaGithub className="text-3xl text-white hover:text-primary " />
           </a>
