@@ -71,7 +71,7 @@ const Contact = () => {
       w-full lg:w-96 p-[2px] rounded-md bg-gradient-to-br
        */}
       <div className="w-full flex flex-col items-center justify-start gap-4">
-        <div className="w-full lg: w-[600px] p2 flex flex-col items-center justify-start gap-4">
+        <div className="w-full lg: p2 flex flex-col items-center justify-start gap-4">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
             <input type="text" 
             name="firstname" 
