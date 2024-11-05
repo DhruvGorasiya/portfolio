@@ -48,7 +48,7 @@ const About = () => {
           I'm a dedicated Software Developer with a Computer Science degree and diverse experience in software development, machine learning, and web development. I excel in cross-functional teamwork, fostering open communication for remarkable results. 
           </p>
           <p className="text-texlight text-base tracking-wide text-justify text-xl">
-          My interests lie in Mahine learning, AI convergence and studying algorithms, and I'm also passionate about web development. My goal is to secure a Full Stack Developer position, further advancing my programming skills.
+          My interests lie in Machine learning, AI convergence and studying algorithms, and I'm also passionate about web development. My goal is to secure a Full Stack Developer position, further advancing my programming skills.
           </p>
           <p className="text-texlight text-base tracking-wide text-justify text-xl">
           Being a cooperative team member, my commitment lies in fostering open and effective communication while promoting synergy among cross-functional teams to drive the achievement of remarkable results. I am consistently open to exploring new prospects and would be genuinely delighted to connect with you for engaging discussions encompassing technology and more. Let's join forces to create something extraordinary together!
