@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url(https://fonts.googleapis.com/css?family=Croissant+One:regular);
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 body {
   width: 100vw;
   min-height: 100vh;
   height: 100vh;
   background: #020010;
-  font-family: "Croissant One", cursive;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,4 +19,20 @@ body {
 body,
 html {
   scroll-behavior: smooth;
+}
+
+.light-text {
+  font-weight: 300;
+}
+.regular-text {
+  font-weight: 400;
+}
+.medium-text {
+  font-weight: 500;
+}
+.semibold-text {
+  font-weight: 600;
+}
+.bold-text {
+  font-weight: 700;
 }

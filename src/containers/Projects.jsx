@@ -8,14 +8,14 @@ import { FaGithub } from "react-icons/fa6";
 const Projects = () => {
   return (
     <section id="projects"
-      className="flex items-center justify-center flex-col gap-12 my-12">
-      <div className="w-full flex items-center justify-center py-24">
+    className="flex items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center pt-24">
         <motion.div
           initial={{ opacity: 0, width: 0 }}
           animate={{ opacity: 1, width: 200 }}
           exit={{ opacity: 0, width: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex item-center justify-center py-24">
+          className="flex item-center justify-center py-12">
           <img src={Leaf1} className="w-6 h-auto object-contain" alt="" />
           <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5 text-2xl">Projects</p>
           <img src={Leaf2} className="w-6 h-auto object-contain" alt="" />

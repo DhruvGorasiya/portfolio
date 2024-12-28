@@ -101,7 +101,7 @@ export const ProjectsData = [
     id: `pokemon-${Date.now()}`,
     name: "pokemon",
     imgSrc: Pokemon,
-    description: "Designed and created a text-based Pokémon game with a captivating storyline, enabling players to explore diverse locations, battle with others' Pokémon, and capture new creatures.",
+    description: "Designed and created a command line based Pokémon game with a captivating storyline, enabling players to explore diverse locations, battle with others' Pokémon, and capture new creatures.",
     gitURL: "https://github.com/DhruvGorasiya/Pokemon",
   },
   // {

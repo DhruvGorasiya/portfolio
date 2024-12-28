@@ -6,13 +6,11 @@ import { HomeSocialLinks } from "../components";
 
 const App = () => {
   return (
-    <div className="w-full xl:w-[1500px] py-32px px-4 lg:px-12 pr-4 lg:pr-32">
+    <div className="w-full xl:w-[1500px] py-32px px-4 lg:px-12 pr-4 lg:pr-32 mt-12">
       
       <ParticlesContainer/>
-
       <Header/>
       <Home/>
-      {/* <ServiceCount/> */}
       <About/>
       <Skills/>
       <Projects/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {AnimatePresence ,motion } from "framer-motion";
 import { Leaf1, Leaf2, django, MongoDb ,cpp, vscode, nodejs} from "../assets";
 import './index.scss';
@@ -12,16 +12,26 @@ import './index.scss'
 
 
 const Skills = () => {
+  const [refresh, setRefresh] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefresh(prev => prev + 1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return(
     <section id="skills"
-      className="flex items-center justify-center flex-col gap-12 my-12">
-      <div className="w-full flex items-center justify-center py-12">
+    className="flex items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center pt-24">
         <motion.div
           initial={{ opacity: 0, width: 0 }}
           animate={{ opacity: 1, width: 200 }}
           exit={{ opacity: 0, width: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex item-center justify-center py-24">
+          className="flex item-center justify-center py-12">
           <img src={Leaf1} className="w-6 h-auto object-contain" alt="" />
           <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5 text-2xl">Skills</p>
           <img src={Leaf2} className="w-6 h-auto object-contain" alt="" />
@@ -89,19 +99,18 @@ const Skills = () => {
             </div>
         </div> */}
         <div className="w-full flex flex-col gap-4 items-center justify-center px-8">
-          <SkillCard skill={`python`} percentage={"95%"} color={"#008FFF"} move={true} />
-          <SkillCard skill={"Java"} percentage={"80%"} color={"yellow"} />
-          <SkillCard skill={"JavaScript"} percentage={"80%"} color={"#FF3F3F"} move={true}/>
-          <SkillCard skill={"HTML & CSS"} percentage={"95%"} color={"lightgreen"} />
-          <SkillCard skill={"MongoDb"} percentage={"90%"} color={"white"} move={true}/>
-          <SkillCard skill={"React Native"} percentage={"90%"} color={"orange"} />
+          <SkillCard key={`python-${refresh}`} skill={`Python | Django | Flask | FastAPI`} percentage={"95%"} color={"#008FFF"} move={true} />
+          <SkillCard key={`java-${refresh}`} skill={"Java | Spring Boot"} percentage={"85%"} color={"yellow"} />
+          <SkillCard key={`js-${refresh}`} skill={"JavaScript | Node.js | Express.js | Next.js | React.js"} percentage={"90%"} color={"#FF3F3F"} move={true}/>
+          <SkillCard key={`html-${refresh}`} skill={"TensorFlow | PyTorch | OpenCV | Pandas | Numpy"} percentage={"95%"} color={"lightgreen"} />
+          <SkillCard key={`db-${refresh}`} skill={"MongoDb | MySQL | PostgreSQL | Firebase"} percentage={"90%"} color={"white"} move={true}/>
+          <SkillCard key={`git-${refresh}`} skill={"Git | GitHub | Docker | AWS"} percentage={"90%"} color={"orange"} />
         </div>
-
       </div>
 
-      <p className="text-texlight text-base tracking-wide text-justify text-xl">
-       Passionate software engineer with expertise in Java, Python, C++, and JavaScript (including HTML, CSS, React) for web development. Proficient in backend technologies like Node.js for server-side programming. Skilled in databases, with strengths in SQL and MongoDB. Experienced with version control using Git and GitHub for collaborative development.
-       </p>
+      <p className="text-texlight tracking-wide text-justify text-xl mt-12">
+        Passionate software engineer with comprehensive full-stack development expertise. Proficient in multiple programming languages including Python (Django, Flask, FastAPI), Java (Spring Boot), and JavaScript ecosystems (Node.js, Express.js, Next.js, React.js). Strong foundation in machine learning and data science using TensorFlow, PyTorch, OpenCV, Pandas, and NumPy. Experienced in database management with MongoDB, MySQL, PostgreSQL, and Firebase. Well-versed in development tools and platforms including Git, GitHub, Docker, and AWS, enabling efficient collaborative development and deployment workflows.
+      </p>
 
     </section>
   );

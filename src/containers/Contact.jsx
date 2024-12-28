@@ -47,7 +47,7 @@ const Contact = () => {
   }
   return (
     <section id="contact"
-      className="flex items-center justify-center flex-col gap-12 my-12">
+      className="flex items-center justify-end flex-col">
         {/* <Alert status={"success"} message={"Thanks for contacting me"}/> */}
         <AnimatePresence>
           {alert.isALert && (
@@ -55,7 +55,7 @@ const Contact = () => {
           )}
         
         </AnimatePresence>
-      <div className="w-full flex items-center justify-center py-24">
+      <div className="w-1/2 flex items-center justify-center pt-24">
         <motion.div
           initial={{ opacity: 0, width: 0 }}
           animate={{ opacity: 1, width: 200 }}
@@ -70,7 +70,7 @@ const Contact = () => {
       {/* w-full flex items-center justify-center px-8
       w-full lg:w-96 p-[2px] rounded-md bg-gradient-to-br
        */}
-      <div className="w-full flex flex-col items-center justify-start gap-4">
+      <div className="w-1/2 flex flex-col items-center justify-start gap-4">
         <div className="w-full lg: p2 flex flex-col items-center justify-start gap-4">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
             <input type="text" 

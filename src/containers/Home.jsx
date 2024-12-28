@@ -5,9 +5,11 @@ import { HeroTypeWritter, HomeSocialLinks } from "../components";
 import { Socials } from "../utils/helper";
 
 const Home = () => {
-  return <section id="home" className="flex items-center justify-center flex-col gap-12 relative">
+  return (
+  <section id="home" className="flex items-center justify-center flex-col gap-12 relative mt-12">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
       <div className="w-full h-full flex flex-col items-center lg:items-start justify-center gap-4">
+
         <h2 className="text-3xl lg:text-4xl text-texlight">
           Hello! Its me
           <span className="block tracking-wider text-4xl lg:text-6xl mt-4 text-white">
@@ -58,7 +60,8 @@ const Home = () => {
           src={Hero} className="w-auto h-auto object-contain" />
       </div>
     </div>
-  </section>;
+  </section>
+  );
 };
 
 export default Home;
