@@ -7,6 +7,7 @@ export { default as django } from "./img/django.png";
 export { default as cpp } from "./img/c++.png";
 export { default as vscode } from "./img/vscode.png";
 export { default as nodejs } from "./img/nodejs.png";
+export {default as contact} from "./img/contact-img.svg";
 
 // projects
 
