@@ -9,6 +9,7 @@ export { default as vscode } from "./img/vscode.png";
 export { default as nodejs } from "./img/nodejs.png";
 export {default as contact} from "./img/contact-img.svg";
 export {default as airbrush} from "./img/airbrush.jpg";
+export {default as chatbot} from "./img/chatbot.webp";
 
 
 export { default as RestaurantClone } from "./img/Project/thumb_restaurant_app_mar22.png";

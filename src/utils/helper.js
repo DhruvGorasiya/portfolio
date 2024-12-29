@@ -24,7 +24,8 @@ import {
   FridgeManagerApp,
   keylogger,
   Pokemon,
-  airbrush
+  airbrush,
+  chatbot
 } from "../assets";
 
 export const Socials = [
@@ -78,6 +79,13 @@ export const Menus = [
 
 export const ProjectsData = [
   {
+    id: `chatbot-${Date.now()}`,
+    name: "chatbot",
+    imgSrc: chatbot,
+    description: "Revolutionize Conversations with Specialized Topic Chatbot Experience intelligent, domain-specific discussions powered by OpenAI GPT-4 and Pinecone. Effortlessly manage conversation history with advanced vector embeddings and UUID-based retrieval. Enjoy reliable performance with built-in error handling and API rate limiting—designed to keep your conversations smooth and focused!",
+    gitURL: "https://github.com/DhruvGorasiya/Chatbot",
+  },
+  {
     id: `beachEvents-${Date.now()}`,
     name: "BeachEvents",
     imgSrc: BeachEvents,
@@ -85,18 +93,18 @@ export const ProjectsData = [
     gitURL: "https://github.com/orgs/BeachEvents/teams/dev/repositories",
   },
   {
-    id: `codepen-${Date.now()}`,
-    name: "Fridge Helper",
-    imgSrc: FridgeManagerApp,
-    description: "Transformed kitchen organization with a cutting-edge Django-based web application. Eliminated food wastage and enhanced efficiency by providing automated food expiry alerts, low space notifications, and multi-account sharing capabilities. Contributed to a streamlined food management experience.",
-    gitURL: "https://github.com/DhruvGorasiya/fridgeHelper/tree/main/FridgeManagerProject",
-  },
-  {
     id: `keylogger-${Date.now()}`,
     name: "Keylogger",
     imgSrc: keylogger,
     description: "Developed a Python-based keylogger that discreetly captures user keystrokes, mirroring Google Chrome's functionality, and securely transmits the data to an email address.",
     gitURL: "https://github.com/DhruvGorasiya/Keylogger",
+  },
+  {
+    id: `codepen-${Date.now()}`,
+    name: "Fridge Helper",
+    imgSrc: FridgeManagerApp,
+    description: "Transformed kitchen organization with a cutting-edge Django-based web application. Eliminated food wastage and enhanced efficiency by providing automated food expiry alerts, low space notifications, and multi-account sharing capabilities. Contributed to a streamlined food management experience.",
+    gitURL: "https://github.com/DhruvGorasiya/fridgeHelper/tree/main/FridgeManagerProject",
   },
   {
     id: `pokemon-${Date.now()}`,
@@ -112,6 +120,7 @@ export const ProjectsData = [
     description: "AirBrush is a computer vision-based application that allows users to paint virtually in the air using hand gestures. Using your computer's webcam, you can draw and create digital artwork simply by moving your finger in the air.",
     gitURL: "https://github.com/DhruvGorasiya/AirBrush",
   },
+
   // {
   //   id: `imageSharing-${Date.now()}`,
   //   name: "Image Sharing App",
