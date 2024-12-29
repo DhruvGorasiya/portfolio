@@ -107,11 +107,6 @@ const Skills = () => {
           <SkillCard key={`git-${refresh}`} skill={"Git | GitHub | Docker | AWS"} percentage={"90%"} color={"orange"} />
         </div>
       </div>
-
-      <p className="text-texlight tracking-wide text-justify text-xl mt-12">
-        Passionate software engineer with comprehensive full-stack development expertise. Proficient in multiple programming languages including Python (Django, Flask, FastAPI), Java (Spring Boot), and JavaScript ecosystems (Node.js, Express.js, Next.js, React.js). Strong foundation in machine learning and data science using TensorFlow, PyTorch, OpenCV, Pandas, and NumPy. Experienced in database management with MongoDB, MySQL, PostgreSQL, and Firebase. Well-versed in development tools and platforms including Git, GitHub, Docker, and AWS, enabling efficient collaborative development and deployment workflows.
-      </p>
-
     </section>
   );
 };
