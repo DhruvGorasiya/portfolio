@@ -23,7 +23,8 @@ import {
   BeachEvents,
   FridgeManagerApp,
   keylogger,
-  Pokemon
+  Pokemon,
+  airbrush
 } from "../assets";
 
 export const Socials = [
@@ -103,6 +104,13 @@ export const ProjectsData = [
     imgSrc: Pokemon,
     description: "Designed and created a command line based Pokémon game with a captivating storyline, enabling players to explore diverse locations, battle with others' Pokémon, and capture new creatures.",
     gitURL: "https://github.com/DhruvGorasiya/Pokemon",
+  },
+  {
+    id: `airbrush-${Date.now()}`,
+    name: "airbrush",
+    imgSrc: airbrush,
+    description: "AirBrush is a computer vision-based application that allows users to paint virtually in the air using hand gestures. Using your computer's webcam, you can draw and create digital artwork simply by moving your finger in the air.",
+    gitURL: "https://github.com/DhruvGorasiya/AirBrush",
   },
   // {
   //   id: `imageSharing-${Date.now()}`,

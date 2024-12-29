@@ -49,7 +49,6 @@ const Contact = () => {
   return (
     <section id="contact"
       className="flex flex-col items-center justify-start w-full min-h-screen px-8">
-      {/* Centered Title */}
       <div className="w-1/2 flex items-center justify-center pt-24">
         <motion.div
           initial={{ opacity: 0, width: 0 }}
@@ -87,10 +86,6 @@ const Contact = () => {
               value={data.email}
               onChange={handleTextChange}
               placeholder="Email" className="w-full px-4 py-3 rounded-md border border-[rgba(255,255,255,0.3)] bg-transparent focus:border-primary outline-none text-texlight" />
-            {/* <input type="email" 
-            value={data.email}
-            onChange={handleTextChange}
-            placeholder="Email" className="w-full px-4 py-3 rounded-md border border-[rgba(255,255,255,0.3)] bg-transparent focus:border-primary outline-none text-texlight" /> */}
             <textarea name="message"
             value={data.message}
             onChange={handleTextChange}
