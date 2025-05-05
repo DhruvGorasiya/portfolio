@@ -25,4 +25,8 @@ export { default as FreshJuiceUI } from "./img/Project/thumb-fresh0juics-tweenma
 export { default as SocialMedia } from "./img/Project/thumb-fullstack-socialmedia-app-react-sanity.png";
 export { default as PortfolioFirebase } from "./img/Project/thumb-portfolio-firebase.jpeg";
 export { default as Pokemon } from "./img/Project/Pokemon-Logo.png";
+export { default as fraudShieldImg } from "./img/FraudShield.jpg";
+export { default as optiLearnImg } from "./img/OptiLearn.jpeg";
+export { default as brightMindImg } from "./img/BrightMind.png";
+export { default as schedulEaseImg } from "./img/SchedulEase.png";
 export {default as Resume } from "./dhruv_gorasiya_Resume.pdf"
