@@ -24,7 +24,7 @@ const Home = () => {
           >
             <h2 className="text-3xl lg:text-4xl text-texlight">
               Hello! I'm
-              <span className="block text-gradient text-4xl lg:text-6xl mt-2 font-bold">
+              <span className="text-gradient text-4xl lg:text-6xl font-bold ml-2">
                 Dhruv
               </span>
             </h2>
@@ -32,7 +32,7 @@ const Home = () => {
             <h2 className="text-2xl lg:text-3xl text-texlight mt-4">
               And I'm a {" "}
               <span className="text-gradient">
-                <HeroTypeWritter words={["Full Stack Developer"]} speed={100}/>
+                <HeroTypeWritter words={["Machine Learning/Artificial Intelligence Engineer"]} speed={100}/>
               </span>
             </h2>
 
