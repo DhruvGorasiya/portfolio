@@ -50,7 +50,7 @@ const About = () => {
             transition={{ delay: 0.4 }}
             className="text-texlight tracking-wide text-justify text-lg mb-8"
           >
-            My interests lie in Machine learning, AI convergence and studying algorithms, and I'm also passionate about web development. My goal is to secure a Full Stack Developer position, further advancing my programming skills.
+            My interests lie in Machine Learning, Artificial Intelligence, and algorithmic research. I am passionate about building intelligent systems that solve real-world problems, and my goal is to contribute to innovative AI-driven solutions in both research and industry.
           </motion.p>
 
           <motion.p 
@@ -69,7 +69,7 @@ const About = () => {
             transition={{ delay: 0.8 }}
             className="flex flex-wrap gap-3"
           >
-            {['Machine Learning', 'Web Development', 'Full Stack', 'AI'].map((skill, index) => (
+            {['Machine Learning', 'Artificial Intelligence', 'Algorithmic Research', 'Web Development'].map((skill, index) => (
               <span 
                 key={index}
                 className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-white/80 text-sm border border-white/10 hover:from-primary/20 hover:to-secondary/20 transition-colors duration-300"
