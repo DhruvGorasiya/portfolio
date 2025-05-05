@@ -104,7 +104,7 @@ const Skills = () => {
           <SkillCard key={`js-${refresh}`} skill={"JavaScript | Node.js | Express.js | Next.js | React.js"} percentage={"90%"} color={"#FF3F3F"} move={true}/>
           <SkillCard key={`html-${refresh}`} skill={"TensorFlow | PyTorch | OpenCV | Pandas | Numpy"} percentage={"95%"} color={"lightgreen"} />
           <SkillCard key={`db-${refresh}`} skill={"MongoDb | MySQL | PostgreSQL | Firebase"} percentage={"90%"} color={"white"} move={true}/>
-          <SkillCard key={`git-${refresh}`} skill={"Git | GitHub | Docker | AWS"} percentage={"90%"} color={"orange"} />
+          <SkillCard key={`git-${refresh}`} skill={"AWS | Azure | GCP | Git | GitHub | Docker"} percentage={"90%"} color={"orange"} />
         </div>
       </div>
     </section>
