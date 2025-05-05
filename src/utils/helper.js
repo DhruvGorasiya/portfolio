@@ -11,21 +11,16 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import {
-  ChatApp,
-  CodePenClone,
-  FreshJuiceUI,
-  ImageSharing,
-  OpenAI,
-  PixabayClone,
-  PortfolioFirebase,
-  RestaurantClone,
-  SocialMedia,
   BeachEvents,
   FridgeManagerApp,
   keylogger,
   Pokemon,
   airbrush,
-  chatbot
+  chatbot,
+  fraudShieldImg,
+  optiLearnImg,
+  brightMindImg,
+  schedulEaseImg,
 } from "../assets";
 
 export const Socials = [
@@ -79,8 +74,40 @@ export const Menus = [
 
 export const ProjectsData = [
   {
+    id: 1,
+    imgSrc: fraudShieldImg,
+    name: "FraudShield",
+    description: "A fraud detection pipeline built to analyze millions of transactions and flag anomalies in real-time. Combines advanced classification and sampling strategies to secure digital payments and reduce false positives.",
+    gitURL: "https://github.com/DhruvGorasiya/Fraudulent-Transaction-Detection",
+    techStack: ["Python", "Machine Learning", "Pandas", "Scikit-learn"],
+  },
+  {
+    id: 2,
+    imgSrc: optiLearnImg,
+    name: "OptiLearn",
+    description: "An intelligent course scheduler that minimizes cognitive load and burnout. It dynamically generates personalized academic plans based on feedback, performance trends, and workload optimization.",
+    gitURL: "https://github.com/DhruvGorasiya/OptiLearn",
+    techStack: ["Python", "Flask", "React", "Genetic Algorithm"],
+  },
+  {
+    id: 3,
+    imgSrc: brightMindImg,
+    name: "BrightMind",
+    description: "An AI-powered tutoring system that adapts to individual learning styles using reinforcement learning and NLP. It delivers personalized feedback and guidance while continuously improving through student interactions.",
+    gitURL: "https://github.com/DhruvGorasiya/Brightmind",
+    techStack: ["Python", "NLP", "Reinforcement Learning", "Flask"],
+  },
+  {
+    id: 4,
+    imgSrc: schedulEaseImg,
+    name: "SchedulEase",
+    description: "A smart event scheduling tool designed to reduce mismatches in availability, venue, and timing. It forecasts and adapts to real-world constraints with user-friendly planning and data-driven optimization.",
+    gitURL: "https://github.com/DhruvGorasiya/SchedulEase",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+  },
+  {
     id: `chatbot-${Date.now()}`,
-    name: "chatbot",
+    name: "Chatbot",
     imgSrc: chatbot,
     description: "Revolutionize Conversations with Specialized Topic Chatbot Experience intelligent, domain-specific discussions powered by OpenAI GPT-4 and Pinecone. Effortlessly manage conversation history with advanced vector embeddings and UUID-based retrieval. Enjoy reliable performance with built-in error handling and API rate limiting—designed to keep your conversations smooth and focused!",
     gitURL: "https://github.com/DhruvGorasiya/Chatbot",
@@ -108,14 +135,14 @@ export const ProjectsData = [
   },
   {
     id: `pokemon-${Date.now()}`,
-    name: "pokemon",
+    name: "Pokemon",
     imgSrc: Pokemon,
     description: "Designed and created a command line based Pokémon game with a captivating storyline, enabling players to explore diverse locations, battle with others' Pokémon, and capture new creatures.",
     gitURL: "https://github.com/DhruvGorasiya/Pokemon",
   },
   {
     id: `airbrush-${Date.now()}`,
-    name: "airbrush",
+    name: "AirBrush",
     imgSrc: airbrush,
     description: "AirBrush is a computer vision-based application that allows users to paint virtually in the air using hand gestures. Using your computer's webcam, you can draw and create digital artwork simply by moving your finger in the air.",
     gitURL: "https://github.com/DhruvGorasiya/AirBrush",
