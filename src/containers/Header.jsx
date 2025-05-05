@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="w-full flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <span className="text-gradient font-bold text-lg">DG</span>
+        <span className="text-gradient font-bold text-lg">Dhruv Gorasiya</span>
       </div>
       <div className="flex items-center gap-4">
         {Menus && Menus.map((item,index) => (
