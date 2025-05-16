@@ -5,18 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --gradient-start: #00FFAA;
-  --gradient-middle: #00FF60;
-  --gradient-end: #00B8FF;
+  --gradient-start: #2193b0;    /* Light Blue */
+  --gradient-middle1: #00B4DB;  /* Cyan */
+  --gradient-middle2: #4A90E2;  /* Blue */
+  --gradient-middle3: #6B48FF;  /* Purple */
+  --gradient-end: #1CD8D2;      /* Turquoise */
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
   height: 100vh;
-  background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+  background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-middle1), var(--gradient-middle2), var(--gradient-middle3), var(--gradient-end));
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 8s ease infinite;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   display: flex;
@@ -64,7 +66,7 @@ html {
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle1), var(--gradient-middle2), var(--gradient-middle3), var(--gradient-end));
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;

@@ -9,6 +9,7 @@ import {
   FaRenren,
   FaUser,
   FaYoutube,
+  FaBriefcase,
 } from "react-icons/fa6";
 import {
   BeachEvents,
@@ -51,6 +52,12 @@ export const Menus = [
     Icon: FaUser,
     uri: "#about",
     name: "About",
+  },
+  {
+    id: `experience-${Date.now()}`,
+    Icon: FaBriefcase,
+    uri: "#experience",
+    name: "Experience",
   },
   {
     id: `skills-${Date.now()}`,

@@ -1,5 +1,5 @@
 import React from "react";
-import {About, Contact, Header,Home, ParticlesContainer, Projects, Skills} from "./"
+import {About, Contact, Header, Home, ParticlesContainer, Projects, Skills, Experience} from "./"
 import { AnimatePresence } from "framer-motion";
 import { Socials } from "../utils/helper";
 import { HomeSocialLinks } from "../components";
@@ -23,6 +23,7 @@ const App = () => {
         <div className="pt-20 space-y-32">
           <Home/>
           <About/>
+          <Experience/>
           <Skills/>
           <Projects/>
           <Contact/>

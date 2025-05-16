@@ -99,12 +99,45 @@ const Skills = () => {
             </div>
         </div> */}
         <div className="w-full flex flex-col gap-4 items-center justify-center px-8">
-          <SkillCard key={`python-${refresh}`} skill={`Python | Django | Flask | FastAPI`} percentage={"95%"} color={"#008FFF"} move={true} />
-          <SkillCard key={`java-${refresh}`} skill={"Java | Spring Boot"} percentage={"85%"} color={"yellow"} />
-          <SkillCard key={`js-${refresh}`} skill={"JavaScript | Node.js | Express.js | Next.js | React.js"} percentage={"90%"} color={"#FF3F3F"} move={true}/>
-          <SkillCard key={`html-${refresh}`} skill={"TensorFlow | PyTorch | OpenCV | Pandas | Numpy"} percentage={"95%"} color={"lightgreen"} />
-          <SkillCard key={`db-${refresh}`} skill={"MongoDb | MySQL | PostgreSQL | Firebase"} percentage={"90%"} color={"white"} move={true}/>
-          <SkillCard key={`git-${refresh}`} skill={"AWS | Azure | GCP | Git | GitHub | Docker"} percentage={"90%"} color={"orange"} />
+          <SkillCard 
+            key={`python-${refresh}`} 
+            skill={`Python | Django | Flask | FastAPI`} 
+            color={"#008FFF"} 
+            move={true} 
+            proficiency="expert" 
+          />
+          <SkillCard 
+            key={`java-${refresh}`} 
+            skill={"Java | Spring Boot"} 
+            color={"yellow"} 
+            proficiency="advanced" 
+          />
+          <SkillCard 
+            key={`js-${refresh}`} 
+            skill={"JavaScript | Node.js | Express.js | Next.js | React.js"} 
+            color={"#FF3F3F"} 
+            move={true} 
+            proficiency="advanced"
+          />
+          <SkillCard 
+            key={`ml-${refresh}`} 
+            skill={"TensorFlow | PyTorch | OpenCV | Pandas | Numpy"} 
+            color={"lightgreen"} 
+            proficiency="advanced" 
+          />
+          <SkillCard 
+            key={`db-${refresh}`} 
+            skill={"MongoDb | MySQL | PostgreSQL | Firebase"} 
+            color={"white"} 
+            move={true} 
+            proficiency="advanced"
+          />
+          <SkillCard 
+            key={`cloud-${refresh}`} 
+            skill={"AWS | Azure | GCP | Git | GitHub | Docker"} 
+            color={"orange"} 
+            proficiency="expert" 
+          />
         </div>
       </div>
     </section>
