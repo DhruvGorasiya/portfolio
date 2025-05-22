@@ -123,6 +123,40 @@ const ExperienceCard = ({ role, company, location, duration, overview, highlight
 const Experience = () => {
   const experiences = [
     {
+      role: "Founder & CTO",
+      company: (
+        <a
+          href="https://twinly.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-primary hover:text-secondary transition-colors"
+        >
+          Twinly (Twinly.net)
+        </a>
+      ),
+      location: "Boston, MA",
+      duration: "March 2025 – Present",
+      overview: "Founded and led the development of Twinly, an AI-powered cognitive twin platform that integrates with productivity tools to help users manage tasks, memory, and actions more efficiently.",
+      highlights: [
+        "Founded and led the development of Twinly, integrating with Gmail, Notion, Slack, and Google Calendar to manage tasks, memory, and actions—helping users reduce context switching by 35% in early trials.",
+        "Architected and deployed a scalable full-stack system using Next.js, FastAPI, PostgreSQL, and Pinecone, enabling low-latency retrieval-augmented generation (RAG) from over 10,000 vectorized memory objects.",
+        "Designed and fine-tuned personalized AI agents using GPT-4o, increasing action relevance and memory recall by 30% through feedback loops and similarity-based threshold optimization.",
+        "Implemented secure OAuth and cross-platform API integrations to ingest user data and trigger automated actions, maintaining 98%+ uptime on production infrastructure via GCP Cloud Run.",
+        "Led a team of 3 developers and 1 designer to ship the MVP 3 weeks ahead of schedule, onboarded 15+ beta users, and launched core features like weekly digests and smart timelines that saved users 3–5 hours/week."
+      ],
+      technologies: [
+        "Next.js",
+        "FastAPI",
+        "PostgreSQL",
+        "Pinecone",
+        "GPT-4o",
+        "OAuth",
+        "GCP Cloud Run",
+        "Product Management",
+        "Team Leadership"
+      ]
+    },
+    {
       role: "Research Assistant - Machine Learning",
       company: "California State University, Long Beach",
       location: "Long Beach, CA",
