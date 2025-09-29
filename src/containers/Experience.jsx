@@ -123,6 +123,52 @@ const ExperienceCard = ({ role, company, location, duration, overview, highlight
 const Experience = () => {
   const experiences = [
     {
+      role: "Software Engineering Intern",
+      company: (
+        <a
+          href="https://weaviate.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-primary hover:text-secondary transition-colors"
+        >
+          Weaviate (vector database & AI search)
+        </a>
+      ),
+      location: "Boston, MA (Hybrid / Remote-friendly)",
+      duration: "August 2025 – Present",
+      overview: "Contributed to the Weaviate ecosystem by modernizing integrations, improving search performance, and hardening reliability for production-grade RAG pipelines. Led upgrades of community tooling to v4, optimized latency under multi-node workloads, and shipped developer-friendly docs and demos that reduced time-to-value for partners.",
+      highlights: [
+        "Scaled RAG pipelines to handle millions of documents, increasing end-to-end throughput by ~30% via parallel ingestion, hybrid search, and metadata filtering.",
+        "Drove p95 query latency to <200 ms for 95% of requests by prototyping concurrency-safe microservices and tuning index/ANN parameters across multi-node clusters and GPU-accelerated environments.",
+        "Upgraded the Dify Weaviate plugin from v3 → v4, fixing hybrid & generative search paths, schema management, and cloud/local connectivity; collaborated with maintainers to land a clean PR and migration notes.",
+        "Built telemetry dashboards (latency, throughput, error distribution) and alerts that cut debugging cycles ~40%, enabling proactive recovery and faster incident triage.",
+        "Delivered an end-to-end Box demo app showcasing ingestion → chunking → hybrid retrieval → LLM generation; refactored auth and search modules per PM feedback for a smoother developer flow.",
+        "Wrote integration guides and reusable API recipes that standardized reliability practices across partner teams; reduced 'first successful query' time for new users.",
+        "Coordinated on a partner workflow (Orkes + Weaviate), documenting event-driven retrieval patterns and long-running job orchestration for production RAG.",
+        "Stress-tested ingestion and query paths under sharded datasets, introduced backpressure & batching, and documented cost/perf trade-offs for ANN settings and filters."
+      ],
+      technologies: [
+        "Weaviate v3/v4",
+        "Hybrid Search (BM25 + Vector)",
+        "Generative Search",
+        "ANN (HNSW)",
+        "GraphQL/REST",
+        "Python",
+        "FastAPI",
+        "Node.js",
+        "Next.js",
+        "Docker",
+        "GCP",
+        "Observability (metrics, tracing, logging)",
+        "Load/Soak Testing",
+        "OAuth & Service Auth",
+        "Data Modeling",
+        "Schema & Tenancy",
+        "API Design",
+        "Technical Writing & DX"
+      ]
+    },
+    {
       role: "Founder & CTO",
       company: (
         <a
@@ -135,7 +181,7 @@ const Experience = () => {
         </a>
       ),
       location: "Boston, MA",
-      duration: "March 2025 – Present",
+      duration: "March 2025 – July 2025",
       overview: "Founded and led the development of Twinly, an AI-powered cognitive twin platform that integrates with productivity tools to help users manage tasks, memory, and actions more efficiently.",
       highlights: [
         "Founded and led the development of Twinly, integrating with Gmail, Notion, Slack, and Google Calendar to manage tasks, memory, and actions—helping users reduce context switching by 35% in early trials.",
