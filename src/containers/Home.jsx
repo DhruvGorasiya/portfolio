@@ -1,103 +1,137 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Hero, Resume, about } from "../assets";
-import { HeroTypeWritter, HomeSocialLinks } from "../components";
+import { motion } from "framer-motion";
+import { Resume } from "../assets";
 import { Socials } from "../utils/helper";
+
+const name = "Dhruv Gorasiya";
+// Cursor appears after last letter: (chars-1) * 0.04 + 0.4 ≈ 1.0s
+const CURSOR_DELAY = (name.length - 1) * 0.04 + 0.5;
 
 const Home = () => {
   return (
-    <section id="home" className="py-12">
-      {/* Background Blobs */}
-      <div className="absolute left-0 right-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-60 h-60 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-full blur-3xl" />
-      </div>
+    <section id="home" className="min-h-screen flex flex-col justify-center pt-14">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12 w-full">
 
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="glass-card p-6 rounded-2xl"
+        {/* Large name — letter by letter + blinking cursor */}
+        <h1
+          className="font-serif leading-none tracking-tight text-cream mb-6"
+          style={{ fontSize: "clamp(56px, 10vw, 120px)" }}
+          aria-label={name}
+        >
+          {name.split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.04, duration: 0.4, ease: "easeOut" }}
+              style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
+            >
+              {char}
+            </motion.span>
+          ))}
+          {/* Blinking cursor */}
+          <motion.span
+            className="text-accent cursor-blink inline-block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: CURSOR_DELAY, duration: 0.1 }}
+            aria-hidden="true"
           >
-            <h2 className="text-3xl lg:text-4xl text-texlight">
-              Hello! I'm
-              <span className="text-gradient text-4xl lg:text-6xl font-bold ml-2">
-                Dhruv
-              </span>
-            </h2>
+            _
+          </motion.span>
+        </h1>
 
-            <h2 className="text-2xl lg:text-3xl text-texlight mt-4">
-              And I'm a {" "}
-              <span className="text-gradient">
-                <HeroTypeWritter words={["Machine Learning/Artificial Intelligence Engineer"]} speed={100}/>
-              </span>
-            </h2>
+        {/* Current title */}
+        <motion.p
+          className="font-mono text-sm text-muted mb-8"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
+        >
+          Software Engineering Intern, Weaviate
+        </motion.p>
 
-            <p className="text-base text-texlight mt-6 leading-relaxed">
-              Transforming concepts into reality through the development of software that seamlessly merges technology and artistic innovation.
-            </p>
+        {/* Statement */}
+        <motion.p
+          className="font-mono text-sm text-cream/70 max-w-xl leading-relaxed mb-12"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
+        >
+          I build production systems at the intersection of machine learning and
+          scalable infrastructure. Currently scaling vector search pipelines at Weaviate.
+        </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-3 mt-8">
-              <a 
-                href={Resume} 
-                className="w-full sm:w-auto px-6 py-2 rounded-xl text-white font-medium hover:shadow-glow transition-all duration-300 hover:scale-105 text-center bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-primary/50"
-              >
-                View Resume
-              </a>
-              <a 
-                href={Resume} 
-                download={true}
-                className="w-full sm:w-auto px-6 py-2 rounded-xl text-white font-medium hover:shadow-glow transition-all duration-300 hover:scale-105 text-center bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 hover:border-primary/50"
-              >
-                Download Resume
-              </a>
-            </div>
-
-            <div className="flex items-center justify-center gap-6 mt-8">
-              <AnimatePresence>
-                {Socials && Socials.map((item,index)=> (
-                  <HomeSocialLinks key={index} data={item} index={index}/>
-                ))}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-
-          {/* Right Content - Hero Image */}
-          {/* <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center justify-center"
+        {/* CTAs + social links */}
+        <motion.div
+          className="flex flex-wrap items-center gap-4"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 0.5, ease: "easeOut" }}
+        >
+          {/* Resume — outlined button so it reads as primary CTA */}
+          <motion.a
+            href={Resume}
+            download
+            className="font-mono text-xs border border-divider text-cream/80 px-4 py-2 inline-flex items-center gap-2 transition-colors duration-200"
+            whileHover={{ borderColor: "#E8FF47", color: "#E8FF47" }}
+            transition={{ duration: 0.15 }}
           >
-            <div className="relative w-full max-w-md">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10" />
-              <motion.img 
-                initial={{ y: 0 }}
-                animate={{ y: [-10, 10, -10] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 3,
-                  ease: "easeInOut"
-                }}
-                src={Hero} 
-                className="w-full h-auto object-contain" 
-                alt="Hero"
-              />
-            </div>
-          </motion.div> */}
+            Download Resume
+            <motion.span
+              initial={{ y: 0 }}
+              whileHover={{ y: 2 }}
+              transition={{ duration: 0.15 }}
+            >
+              ↓
+            </motion.span>
+          </motion.a>
 
-          <div className="w-full flex items-center justify-center px-8">
-            <div className="w-full lg:w-96 p-[2px] rounded-md bg-gradient-to-br relative">
-              <img src={about}
-                className="w-full rounded-md h-auto object-contain"
-                alt="" />
-              <div className="absolute w-full h-full -top-3 -left-2 bg-gradient-to-br from bg-primary to-secondary rounded-md blur -z-10"></div>
-            </div>
-          </div>
-        </div>
+          {/* Divider */}
+          <span className="font-mono text-xs text-divider select-none hidden sm:block">—</span>
+
+          {/* Social links */}
+          {Socials.map((s) => (
+            <motion.a
+              key={s.id}
+              href={s.uri}
+              target={s.uri.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-muted inline-flex items-center gap-1.5 group link-visible"
+              whileHover={{ color: "#F5F5F0" }}
+              transition={{ duration: 0.15 }}
+            >
+              {s.label}
+              <span className="opacity-0 -translate-x-0.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
+                ↗
+              </span>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div
+          className="mt-24 flex items-center gap-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+        >
+          <motion.div
+            className="w-px h-10 bg-divider origin-top"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ delay: 1.4, duration: 0.5, ease: "easeOut" }}
+          />
+          <motion.span
+            className="font-mono text-xs text-muted/50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.7, duration: 0.4 }}
+          >
+            scroll
+          </motion.span>
+        </motion.div>
+
       </div>
     </section>
   );

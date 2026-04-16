@@ -1,284 +1,177 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Leaf1, Leaf2 } from "../assets";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ExperiencesData } from "../utils/helper";
 
-const ExperienceCard = ({ role, company, location, duration, overview, highlights, technologies, index }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.2 }}
-    className="relative"
+const Chevron = ({ isOpen }) => (
+  <motion.svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    transition={{ duration: 0.25, ease: "easeInOut" }}
+    className="flex-shrink-0"
   >
-    {/* Timeline Line and Dot */}
-    <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/20 to-secondary/20 ml-6 hidden md:block">
-      <div className="sticky top-1/2">
-        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-secondary -ml-1.5" />
-      </div>
-    </div>
-
-    {/* Experience Card */}
-    <div className="md:ml-16 relative">
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        className="glass-card p-8 rounded-xl mb-8 hover:shadow-2xl transition-all duration-300 border border-white/5"
-      >
-        {/* Header Section */}
-        <div className="flex justify-between items-start flex-wrap gap-4 mb-6">
-          <div>
-            <motion.h3 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-2xl font-bold text-gradient mb-2"
-            >
-              {role}
-            </motion.h3>
-            <motion.p 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-texlight text-lg font-medium"
-            >
-              {company}
-            </motion.p>
-          </div>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-right"
-          >
-            <p className="text-texlight font-medium">{location}</p>
-            <p className="text-primary/80 font-medium">{duration}</p>
-          </motion.div>
-        </div>
-
-        <div className="space-y-6">
-          {/* Overview Section with Gradient Border */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="p-4 rounded-lg bg-gradient-to-r from-primary/5 to-secondary/5 border border-white/5"
-          >
-            <p className="text-texlight/90 leading-relaxed">{overview}</p>
-          </motion.div>
-
-          {/* Key Achievements */}
-          <div>
-            <motion.h4 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="text-gradient font-semibold mb-4 text-lg"
-            >
-              Key Achievements
-            </motion.h4>
-            <div className="space-y-4">
-              {highlights.map((highlight, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 + idx * 0.1 }}
-                  className="flex items-start gap-3 group"
-                >
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                  <p className="text-texlight/90 leading-relaxed group-hover:text-white transition-colors duration-300">{highlight}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technologies Used */}
-          {technologies && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <h4 className="text-gradient font-semibold mb-4 text-lg">Technologies & Skills</h4>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((tech, idx) => (
-                  <motion.span
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.9 + idx * 0.1 }}
-                    whileHover={{ scale: 1.1 }}
-                    className="px-4 py-2 rounded-full text-sm bg-gradient-to-r from-primary/10 to-secondary/10 text-texlight border border-white/10 hover:border-primary/50 transition-all duration-300"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </div>
-      </motion.div>
-    </div>
-  </motion.div>
+    <path
+      d="M2 4L6 8L10 4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </motion.svg>
 );
 
+const ExperienceRow = ({ exp, index, isOpen, onToggle }) => {
+  return (
+    <div className="border-b border-divider">
+      {/* Clickable row header */}
+      <motion.button
+        className="w-full py-5 flex items-start sm:items-center justify-between gap-4 text-left group cursor-pointer rounded"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        whileHover={{ backgroundColor: "rgba(245,245,240,0.025)" }}
+        transition={{ duration: 0.15 }}
+      >
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 min-w-0">
+          <span className="font-mono text-xs text-accent flex-shrink-0 inline-flex items-center gap-2">
+            {exp.company}
+            {exp.companyUrl && (
+              <a
+                href={exp.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 border border-accent/40 hover:border-accent hover:bg-accent/10 text-accent px-1.5 py-0.5 rounded transition-colors duration-150 text-xs"
+                title={`Visit ${exp.company}`}
+              >
+                ↗
+              </a>
+            )}
+          </span>
+          <span className="font-serif text-base lg:text-lg text-cream/90 group-hover:text-cream transition-colors duration-200 truncate">
+            {exp.role}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <span className="font-mono text-xs text-muted hidden sm:block">{exp.location}</span>
+          <span className="font-mono text-xs text-muted whitespace-nowrap">{exp.duration}</span>
+          {/* Visible expand/collapse button */}
+          <span
+            className={`w-6 h-6 border rounded-full flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${
+              isOpen
+                ? "border-accent text-accent"
+                : "border-divider text-muted group-hover:border-cream/40 group-hover:text-cream/60"
+            }`}
+          >
+            <Chevron isOpen={isOpen} />
+          </span>
+        </div>
+      </motion.button>
+
+      {/* Accordion content */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <ul className="pb-8 space-y-3 pl-0">
+              {exp.highlights.map((highlight, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                  className="flex gap-4 items-start"
+                >
+                  <span className="text-accent font-mono text-xs flex-shrink-0 mt-0.5 select-none">—</span>
+                  <span className="font-mono text-xs text-cream/75 leading-relaxed">
+                    {highlight}
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const Experience = () => {
-  const experiences = [
-    {
-      role: "Software Engineering Intern",
-      company: (
-        <a
-          href="https://weaviate.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline text-primary hover:text-secondary transition-colors"
-        >
-          Weaviate (vector database & AI search)
-        </a>
-      ),
-      location: "Boston, MA (Hybrid / Remote-friendly)",
-      duration: "August 2025 – Present",
-      overview: "Contributed to the Weaviate ecosystem by modernizing integrations, improving search performance, and hardening reliability for production-grade RAG pipelines. Led upgrades of community tooling to v4, optimized latency under multi-node workloads, and shipped developer-friendly docs and demos that reduced time-to-value for partners.",
-      highlights: [
-        "Scaled RAG pipelines to handle millions of documents, increasing end-to-end throughput by ~30% via parallel ingestion, hybrid search, and metadata filtering.",
-        "Drove p95 query latency to <200 ms for 95% of requests by prototyping concurrency-safe microservices and tuning index/ANN parameters across multi-node clusters and GPU-accelerated environments.",
-        "Upgraded the Dify Weaviate plugin from v3 → v4, fixing hybrid & generative search paths, schema management, and cloud/local connectivity; collaborated with maintainers to land a clean PR and migration notes.",
-        "Built telemetry dashboards (latency, throughput, error distribution) and alerts that cut debugging cycles ~40%, enabling proactive recovery and faster incident triage.",
-        "Delivered an end-to-end Box demo app showcasing ingestion → chunking → hybrid retrieval → LLM generation; refactored auth and search modules per PM feedback for a smoother developer flow.",
-        "Wrote integration guides and reusable API recipes that standardized reliability practices across partner teams; reduced 'first successful query' time for new users.",
-        "Coordinated on a partner workflow (Orkes + Weaviate), documenting event-driven retrieval patterns and long-running job orchestration for production RAG.",
-        "Stress-tested ingestion and query paths under sharded datasets, introduced backpressure & batching, and documented cost/perf trade-offs for ANN settings and filters."
-      ],
-      technologies: [
-        "Weaviate v3/v4",
-        "Hybrid Search (BM25 + Vector)",
-        "Generative Search",
-        "ANN (HNSW)",
-        "GraphQL/REST",
-        "Python",
-        "FastAPI",
-        "Node.js",
-        "Next.js",
-        "Docker",
-        "GCP",
-        "Observability (metrics, tracing, logging)",
-        "Load/Soak Testing",
-        "OAuth & Service Auth",
-        "Data Modeling",
-        "Schema & Tenancy",
-        "API Design",
-        "Technical Writing & DX"
-      ]
-    },
-    {
-      role: "Founder & CTO",
-      company: (
-        <a
-          href="https://twinly.net"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline text-primary hover:text-secondary transition-colors"
-        >
-          Twinly (Twinly.net)
-        </a>
-      ),
-      location: "Boston, MA",
-      duration: "March 2025 – July 2025",
-      overview: "Founded and led the development of Twinly, an AI-powered cognitive twin platform that integrates with productivity tools to help users manage tasks, memory, and actions more efficiently.",
-      highlights: [
-        "Founded and led the development of Twinly, integrating with Gmail, Notion, Slack, and Google Calendar to manage tasks, memory, and actions—helping users reduce context switching by 35% in early trials.",
-        "Architected and deployed a scalable full-stack system using Next.js, FastAPI, PostgreSQL, and Pinecone, enabling low-latency retrieval-augmented generation (RAG) from over 10,000 vectorized memory objects.",
-        "Designed and fine-tuned personalized AI agents using GPT-4o, increasing action relevance and memory recall by 30% through feedback loops and similarity-based threshold optimization.",
-        "Implemented secure OAuth and cross-platform API integrations to ingest user data and trigger automated actions, maintaining 98%+ uptime on production infrastructure via GCP Cloud Run.",
-        "Led a team of 3 developers and 1 designer to ship the MVP 3 weeks ahead of schedule, onboarded 15+ beta users, and launched core features like weekly digests and smart timelines that saved users 3–5 hours/week."
-      ],
-      technologies: [
-        "Next.js",
-        "FastAPI",
-        "PostgreSQL",
-        "Pinecone",
-        "GPT-4o",
-        "OAuth",
-        "GCP Cloud Run",
-        "Product Management",
-        "Team Leadership"
-      ]
-    },
-    {
-      role: "Research Assistant - Machine Learning",
-      company: "California State University, Long Beach",
-      location: "Long Beach, CA",
-      duration: "August 2023 - June 2024",
-      overview: "Leading research initiatives in large-scale data discovery and similarity matching, focusing on optimizing search algorithms and improving data processing efficiency for heterogeneous datasets.",
-      highlights: [
-        "Pioneered a containment-optimized LSH Ensemble variant that achieved a 22% reduction in query latency across 5,000+ heterogeneous tables, significantly improving data discovery efficiency.",
-        "Developed an innovative hybrid similarity modeling approach combining Minhash, q-grams, and word embeddings, resulting in a 14% boost in attribute-matching precision for schema-agnostic data sources.",
-        "Engineered an adaptive partitioning system with cost-based rebalancing that reduced false positives by 27% in similarity searches, particularly effective for handling skewed data distributions.",
-        "Architected and implemented a comprehensive Python pipeline integrating FastText and Scikit-learn, enabling scalable benchmarking through custom hash-based indexing modules."
-      ],
-      technologies: [
-        "Python",
-        "Machine Learning",
-        "LSH Ensemble",
-        "FastText",
-        "Scikit-learn",
-        "Data Mining",
-        "Algorithm Optimization"
-      ]
-    },
-    {
-      role: "Computer Science Tutor",
-      company: "California State University, Long Beach",
-      location: "Long Beach, CA",
-      duration: "August 2023 - December 2023",
-      overview: "Served as a dedicated computer science tutor, fostering student understanding of complex technical concepts while adapting teaching methods to accommodate diverse learning styles and creating an inclusive learning environment.",
-      highlights: [
-        "Mentored 20+ students in advanced computer science topics, creating personalized learning approaches that led to improved comprehension and academic performance.",
-        "Facilitated hands-on code review sessions for diverse student projects, emphasizing clean coding practices, security considerations, and industry-standard development techniques.",
-        "Developed interactive debugging workshops that improved students' problem-solving skills, resulting in a 30% increase in independent bug resolution.",
-        "Created comprehensive study materials and practical exercises for Data Structures and Algorithms, helping students achieve an average grade improvement of 15%.",
-        "Introduced pair programming sessions that enhanced collaborative learning and improved code quality among student teams.",
-        "Implemented weekly algorithm challenge sessions, helping students prepare for technical interviews and competitive programming contests."
-      ],
-      technologies: [
-        "Data Structures",
-        "Algorithms",
-        "OOP",
-        "Machine Learning",
-        "Code Review",
-        "Technical Mentoring",
-        "Problem Solving",
-        "Debugging",
-        "Pair Programming"
-      ]
-    }
-  ];
+  const [openIdx, setOpenIdx] = useState(null);
+
+  const toggle = (i) => setOpenIdx(openIdx === i ? null : i);
 
   return (
-    <section id="experience" className="py-20">
-      {/* Title */}
-      <div className="w-full flex items-center justify-center mb-12">
-        <motion.div
-          initial={{ opacity: 0, width: 0 }}
-          animate={{ opacity: 1, width: 200 }}
-          exit={{ opacity: 0, width: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex items-center justify-center py-12"
-        >
-          <img src={Leaf1} className="w-6 h-auto object-contain" alt="" />
-          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary px-5 text-3xl font-bold">
-            Experience
-          </p>
-          <img src={Leaf2} className="w-6 h-auto object-contain" alt="" />
-        </motion.div>
-      </div>
+    <section id="experience" className="py-32 border-t border-divider">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
 
-      {/* Experience Timeline */}
-      <div className="container mx-auto px-4">
-        {experiences.map((exp, index) => (
-          <ExperienceCard key={index} {...exp} index={index} />
-        ))}
+        {/* Section label with animated accent line */}
+        <motion.div
+          className="flex items-center gap-4 mb-4"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.div
+            className="h-px bg-accent"
+            initial={{ width: 0 }}
+            whileInView={{ width: 32 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+          />
+          <p className="font-mono text-xs text-muted uppercase tracking-widest">
+            02 — Experience
+          </p>
+        </motion.div>
+
+        {/* Hint text */}
+        <motion.p
+          className="font-mono text-xs text-muted/50 mb-12 pl-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+        >
+          Click any row to expand details
+        </motion.p>
+
+        {/* Table column labels */}
+        <div className="hidden sm:flex items-center justify-between pb-4 border-b border-divider mb-0">
+          <span className="font-mono text-xs text-muted/50">Company · Role</span>
+          <span className="font-mono text-xs text-muted/50 mr-10">Period</span>
+        </div>
+
+        {/* Experience rows */}
+        <div>
+          {ExperiencesData.map((exp, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
+            >
+              <ExperienceRow
+                exp={exp}
+                index={i}
+                isOpen={openIdx === i}
+                onToggle={() => toggle(i)}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Experience; 
+export default Experience;
