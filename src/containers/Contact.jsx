@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ContactEmail, Socials } from "../utils/helper";
+import { Socials } from "../utils/helper";
 
 const Contact = () => {
   const githubSocial = Socials.find((s) => s.label === "GitHub");
@@ -42,19 +42,11 @@ const Contact = () => {
           </p>
 
           {/* Large email link */}
-          <motion.a
-            href={`mailto:${ContactEmail}`}
-            className="font-mono text-xl lg:text-4xl text-cream block mb-10 group inline-flex items-end gap-3 link-visible"
-            whileHover={{ color: "#E8FF47" }}
-            transition={{ duration: 0.15 }}
+          <motion.p
+            className="font-mono text-xl lg:text-4xl text-cream block mb-10"
           >
-            {ContactEmail}
-            <motion.span
-              className="text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-1"
-            >
-              ↗
-            </motion.span>
-          </motion.a>
+            Get in touch
+          </motion.p>
 
           {/* Secondary links */}
           <div className="flex gap-8">

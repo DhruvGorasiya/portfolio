@@ -11,12 +11,10 @@ const useScramble = (text, isActive) => {
 
   useEffect(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-
     if (!isActive) {
       setOutput(text);
       return;
     }
-
     let iteration = 0;
     timerRef.current = setInterval(() => {
       setOutput(
@@ -32,11 +30,36 @@ const useScramble = (text, isActive) => {
       iteration += 0.8;
       if (iteration > text.length) clearInterval(timerRef.current);
     }, 28);
-
     return () => clearInterval(timerRef.current);
   }, [isActive, text]);
 
   return output;
+};
+
+// ─── Framer Motion variants ───────────────────────────────────────────────────
+const rowVariants = {
+  rest: { backgroundColor: "transparent" },
+  hover: { backgroundColor: "#E8FF47" },
+};
+const numVariants = {
+  rest: { color: "rgba(245,245,240,0.08)" },
+  hover: { color: "rgba(8,8,8,0.10)" },
+};
+const nameVariants = {
+  rest: { color: "#F5F5F0" },
+  hover: { color: "#080808" },
+};
+const mutedVariants = {
+  rest: { color: "#6B6B6B" },
+  hover: { color: "rgba(8,8,8,0.5)" },
+};
+const tagVariants = {
+  rest: { borderColor: "#2A2A2A", color: "#6B6B6B" },
+  hover: { borderColor: "rgba(8,8,8,0.25)", color: "#080808" },
+};
+const arrowVariants = {
+  rest: { opacity: 0, x: -4 },
+  hover: { opacity: 1, x: 0 },
 };
 
 // ─── Single project row ───────────────────────────────────────────────────────
@@ -45,86 +68,73 @@ const ProjectRow = ({ project, index, isHovered, isAnyHovered, onEnter, onLeave 
 
   return (
     <motion.div
-      className="relative flex items-start gap-5 py-6 border-b border-divider overflow-hidden"
-      animate={{
-        opacity: isAnyHovered && !isHovered ? 0.25 : 1,
-        x: isHovered ? 10 : 0,
-      }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
+      className="relative border-b border-divider overflow-hidden cursor-pointer"
+      variants={rowVariants}
+      initial="rest"
+      whileHover="hover"
+      onHoverStart={onEnter}
+      onHoverEnd={onLeave}
+      onClick={() => window.open(project.gitURL, "_blank", "noopener,noreferrer")}
+      animate={{ opacity: isAnyHovered && !isHovered ? 0.3 : 1 }}
+      transition={{ duration: 0.18 }}
     >
-      {/* Left accent bar — grows top→bottom */}
-      <motion.div
-        className="absolute left-0 top-0 bottom-0 w-0.5 bg-accent origin-top"
-        animate={{ scaleY: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-      />
-
-      {/* Background accent sweep from left */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(232,255,71,0.06) 0%, rgba(232,255,71,0.02) 40%, transparent 80%)",
-          transformOrigin: "left center",
-        }}
-        animate={{ scaleX: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-      />
-
-      {/* Faded serif number */}
+      {/* Giant faded number — absolute watermark */}
       <motion.span
-        className="font-serif text-4xl leading-none flex-shrink-0 w-14 text-right pt-0.5 select-none"
-        animate={{
-          color: isHovered ? "rgba(232,255,71,0.6)" : "rgba(245,245,240,0.06)",
-          scale: isHovered ? 1.08 : 1,
+        className="absolute right-0 top-1/2 font-serif leading-none pointer-events-none select-none"
+        style={{
+          fontSize: "clamp(120px, 18vw, 220px)",
+          letterSpacing: "-0.04em",
+          transform: "translateY(-50%)",
+          lineHeight: 1,
         }}
-        transition={{ duration: 0.2 }}
+        variants={numVariants}
+        transition={{ duration: 0.18 }}
+        aria-hidden="true"
       >
         {String(index + 1).padStart(2, "0")}
       </motion.span>
 
-      {/* Content */}
-      <div className="flex-1 min-w-0 relative z-10">
-        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5">
-          {/* Scrambled project name */}
-          <a
-            href={project.gitURL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-sm font-medium flex-shrink-0 inline-flex items-center gap-1.5 transition-colors duration-200"
-            style={{ color: isHovered ? "#E8FF47" : "#F5F5F0" }}
-          >
-            <span style={{ letterSpacing: isHovered ? "0.04em" : "0" }}>
-              {scrambled}
-            </span>
-            <motion.span
-              animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -4 }}
-              transition={{ duration: 0.2 }}
-              className="text-xs"
-            >
-              ↗
-            </motion.span>
-          </a>
-          <span className="font-mono text-xs text-muted leading-relaxed sm:truncate">
-            {project.description}
-          </span>
-        </div>
+      {/* Row content — above watermark */}
+      <div className="relative z-10 py-7 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8">
 
-        {/* Tech tags animate on row hover */}
+        {/* Project name (scrambled) + arrow */}
+        <motion.a
+          href={project.gitURL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-serif flex-shrink-0 inline-flex items-center gap-2"
+          style={{ fontSize: "clamp(18px, 2.2vw, 26px)" }}
+          variants={nameVariants}
+          transition={{ duration: 0.18 }}
+        >
+          {scrambled}
+          <motion.span
+            className="font-mono text-sm"
+            variants={arrowVariants}
+            transition={{ duration: 0.18 }}
+          >
+            ↗
+          </motion.span>
+        </motion.a>
+
+        {/* Description */}
+        <motion.span
+          className="font-mono text-xs leading-relaxed flex-1 min-w-0"
+          variants={mutedVariants}
+          transition={{ duration: 0.18 }}
+        >
+          {project.description}
+        </motion.span>
+
+        {/* Tech tags */}
         {project.techStack?.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="flex flex-wrap gap-2 flex-shrink-0">
             {project.techStack.slice(0, 3).map((tech, ti) => (
               <motion.span
                 key={ti}
                 className="font-mono text-xs border px-2 py-0.5"
-                animate={{
-                  borderColor: isHovered ? "rgba(232,255,71,0.5)" : "#2A2A2A",
-                  color: isHovered ? "#E8FF47" : "#6B6B6B",
-                  y: isHovered ? 0 : 0,
-                }}
-                transition={{ delay: ti * 0.05, duration: 0.2 }}
+                variants={tagVariants}
+                transition={{ delay: ti * 0.03, duration: 0.18 }}
               >
                 {tech}
               </motion.span>
@@ -160,9 +170,9 @@ const Projects = () => {
     <section id="projects" className="py-32 border-t border-divider">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
 
-        {/* Section label */}
+        {/* Label */}
         <motion.div
-          className="flex items-center gap-4 mb-16"
+          className="flex items-center gap-4 mb-6"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -180,6 +190,29 @@ const Projects = () => {
           </p>
         </motion.div>
 
+        {/* Large title */}
+        <motion.h2
+          className="font-serif text-cream leading-none tracking-tight mb-4"
+          style={{ fontSize: "clamp(52px, 8vw, 96px)" }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.05 }}
+        >
+          Projects
+        </motion.h2>
+
+        {/* Hint */}
+        <motion.p
+          className="font-mono text-xs text-muted/40 mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+        >
+          Hover to preview · click to open
+        </motion.p>
+
         {/* Project rows */}
         <div>
           {ProjectsData.map((project, i) => (
@@ -188,7 +221,7 @@ const Projects = () => {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.07, duration: 0.45, ease: "easeOut" }}
+              transition={{ delay: i * 0.06, duration: 0.45, ease: "easeOut" }}
             >
               <ProjectRow
                 project={project}
@@ -211,15 +244,14 @@ const Projects = () => {
             style={{
               left: smoothX,
               top: smoothY,
-              translateX: "-50%",
-              translateY: "-72%",
+              translateX: "24px",
+              translateY: "-50%",
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* Image swaps with AnimatePresence when project changes */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={hoveredIdx}
@@ -227,10 +259,7 @@ const Projects = () => {
                 initial={{ opacity: 0, scale: 0.88, rotate: -3, y: 8 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, rotate: 2, y: -4 }}
-                transition={{
-                  duration: 0.22,
-                  ease: [0.23, 1, 0.32, 1],
-                }}
+                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                 style={{ width: 288, height: 192 }}
               >
                 <img
@@ -239,17 +268,10 @@ const Projects = () => {
                   className="w-full h-full object-cover"
                   style={{ filter: "contrast(1.05) brightness(0.9)" }}
                 />
-
-                {/* Accent border */}
                 <div className="absolute inset-0 border border-accent/50" />
-
-                {/* Bottom overlay with name */}
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 px-3 py-2"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(8,8,8,0.92) 0%, transparent 100%)",
-                  }}
+                  style={{ background: "linear-gradient(to top, rgba(8,8,8,0.92) 0%, transparent 100%)" }}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08, duration: 0.2 }}
@@ -261,8 +283,6 @@ const Projects = () => {
                     {ProjectsData[hoveredIdx]?.techStack?.slice(0, 2).join(" · ")}
                   </p>
                 </motion.div>
-
-                {/* Top-right corner accent mark */}
                 <div className="absolute top-0 right-0 w-4 h-4">
                   <div className="absolute top-0 right-0 w-full h-px bg-accent" />
                   <div className="absolute top-0 right-0 w-px h-full bg-accent" />
