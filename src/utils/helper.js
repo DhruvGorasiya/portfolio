@@ -88,7 +88,7 @@ export const ExperiencesData = [
         company: "Weaviate",
         companyUrl: "https://weaviate.io",
         location: "Boston, MA",
-        duration: "Aug 2025 – Present",
+        duration: "Aug 2025 – December 2025",
         highlights: [
             "Scaled RAG pipelines to handle millions of documents, increasing end-to-end throughput by ~30% via parallel ingestion, hybrid search, and metadata filtering.",
             "Drove p95 query latency to <200ms for 95% of requests by prototyping concurrency-safe microservices and tuning index/ANN parameters across multi-node clusters.",
@@ -105,7 +105,7 @@ export const ExperiencesData = [
         company: "Northeastern University",
         companyUrl: null,
         location: "Boston, MA",
-        duration: "Jan 2025 – May 2025",
+        duration: "Jan 2026 – April 2026",
         highlights: [
             "Supported 60+ students across MLOps course covering model deployment, CI/CD pipelines, and production ML systems.",
             "Held weekly office hours and reviewed assignments on Docker, Kubernetes, and cloud infrastructure (AWS/GCP).",
@@ -117,7 +117,7 @@ export const ExperiencesData = [
         company: "Twinly",
         companyUrl: "https://twinly.net",
         location: "Boston, MA",
-        duration: "Mar 2025 – Jul 2025",
+        duration: "March 2025 – July 2025",
         highlights: [
             "Founded and led Twinly, integrating with Gmail, Notion, Slack, and Google Calendar—reducing context switching by 35% in early trials.",
             "Architected a full-stack system using Next.js, FastAPI, PostgreSQL, and Pinecone enabling low-latency RAG over 10,000+ vectorized memory objects.",
@@ -131,7 +131,7 @@ export const ExperiencesData = [
         company: "California State University, Long Beach",
         companyUrl: null,
         location: "Long Beach, CA",
-        duration: "Aug 2023 – Jun 2024",
+        duration: "August 2023 – June 2024",
         highlights: [
             "Developed a containment-optimized LSH Ensemble variant achieving 22% reduction in query latency across 5,000+ heterogeneous tables.",
             "Built a hybrid similarity model combining Minhash, q-grams, and word embeddings, boosting attribute-matching precision by 14%.",
@@ -144,7 +144,7 @@ export const ExperiencesData = [
         company: "California State University, Long Beach",
         companyUrl: null,
         location: "Long Beach, CA",
-        duration: "Aug 2023 – Dec 2023",
+        duration: "August 2023 – December 2023",
         highlights: [
             "Mentored 20+ students in advanced CS topics, creating personalized learning approaches that improved comprehension and academic performance.",
             "Facilitated code review sessions emphasizing clean coding practices and industry-standard development techniques.",
