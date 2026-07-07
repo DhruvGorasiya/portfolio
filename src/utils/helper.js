@@ -84,6 +84,20 @@ export const Menus = [
 
 export const ExperiencesData = [
     {
+        role: "Founder & CEO",
+        company: "CliffEdge",
+        companyUrl: "https://cliffedge.app",
+        location: "Remote",
+        duration: "July 2025 – Present",
+        highlights: [
+            "Founded and solo-built CliffEdge (cliffedge.app), a client-side retirement tax-planning tool on Next.js, React, and TypeScript, shipping a live product with a landing page, two calculator UIs, and a full-viewport cockpit dashboard.",
+            "Architected a pure-TypeScript calculation engine modeling 7 simultaneous tax and benefit cliffs (ACA, IRMAA, NIIT, Social Security Tax Torpedo, LTCG stacking, OBBBA Senior Deduction, Widow Penalty) across 4 distinct MAGI pipelines, with strict engine/UI separation and zero-error build gates.",
+            "Built a \"Show Your Work\" transparency layer that traces every computed number to a primary IRS, CMS, or HHS citation, backed by 800+ unit tests across 26+ Vitest suites and versioned JSON tax tables (no hardcoded thresholds).",
+            "Drove feature validation through direct user and competitor research in DIY/FIRE retirement communities, converting real bug reports into shipped engine fixes and prioritized specs rather than building from assumption.",
+            "Owned the full stack of a solo startup: Stripe Atlas incorporation, Clerk auth, Vercel deployment, Plausible analytics, an 8-event conversion funnel, and a founding-member acquisition offer.",
+        ],
+    },
+    {
         role: "Software Engineering Intern",
         company: "Weaviate",
         companyUrl: "https://weaviate.io",
